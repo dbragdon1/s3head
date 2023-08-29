@@ -56,6 +56,8 @@ s3head -a s3://my-bucket/path/to/my/json/file \
 
 ## Automatic GZIP Decompression
 
+Note: `.tar.gz` format not implemented yet
+
 ```bash
 s3head -n 1000 s3://my-bucket/path/to/my/file.csv.gz \
     | xsv headers
