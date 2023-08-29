@@ -9,6 +9,8 @@ I work with a lot of csv data, most of which are stored in s3, and wanted an eas
 go build ./
 ```
 
+Then copy the `s3path` binary to your bin directory of choice.
+
 # Usage
 
 ## Default behavior
