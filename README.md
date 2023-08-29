@@ -36,11 +36,22 @@ s3head -a s3://my-bucket/path/to/my/key
 
 
 ## Pipe the output
+
 ```bash
 # pipes output to xsv
 # https://github.com/BurntSushi/xsv
 
-s3head -n 1000 s3://my-bucket/path/to/my/key \
+s3head -n 1000 s3://my-bucket/path/to/my/csv/file \
     | xsv select "firstname,lastname" \
     | xsv sample 10
 ```
+
+```bash
+# pipes output to jq
+# https://github.com/jqlang/jq
+
+s3head -a s3://my-bucket/path/to/my/json/file \
+    | jq .my_key
+```
+
+
