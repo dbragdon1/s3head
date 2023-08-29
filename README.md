@@ -54,4 +54,13 @@ s3head -a s3://my-bucket/path/to/my/json/file \
     | jq .my_key
 ```
 
+## Automatic GZIP Decompression
 
+```bash
+s3head -n 1000 s3://my-bucket/path/to/my/file.csv.gz \
+    | xsv headers
+```
+
+# TODO
+
+Implement Automatic untarring if file is in `.tar` format

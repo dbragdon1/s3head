@@ -40,3 +40,18 @@ func ParseS3URI(s3_uri string) (s3.GetObjectInput, error) {
 	return s3.GetObjectInput{Bucket: &s3Bucket, Key: &s3Key}, nil
 
 }
+
+func GetExtention(s3_uri string) string {
+
+	//re := regexp.MustCompile(`\.(.*?)$`)
+
+	re := regexp.MustCompile(`\.([^.]*)$`)
+
+	match := re.FindStringSubmatch(s3_uri)
+
+	if len(match) > 1 {
+		return match[1]
+	} else {
+		return ""
+	}
+}

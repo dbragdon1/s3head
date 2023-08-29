@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bufio"
+	"dbragdon1/s3head/file"
 	"dbragdon1/s3head/utils"
 	"flag"
 	"fmt"
@@ -67,24 +67,19 @@ func main() {
 
 	req, err := s3_svc.GetObject(&s3_object)
 
+	defer req.Body.Close()
+
 	if err != nil {
 		fmt.Printf("Found issue when attempting GetObject: %v \n", err)
 		os.Exit(1)
 	}
 
-	scanner := bufio.NewScanner(req.Body)
+	f := file.NewS3File(s3_uri, *numLines, *allLines, req)
 
-	if *allLines {
-		for scanner.Scan() {
-			fmt.Println(scanner.Text())
-		}
-	} else {
-		for curr_line := 0; curr_line < *numLines; curr_line++ {
+	err = f.Iter()
 
-			if scanner.Scan() {
-				fmt.Println(scanner.Text())
-			}
-		}
+	if err != nil {
+		fmt.Println(err)
 	}
 
 }

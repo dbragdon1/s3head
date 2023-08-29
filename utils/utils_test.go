@@ -37,3 +37,43 @@ func TestParseS3URIInvalidURI(t *testing.T) {
 	}
 
 }
+
+func TestGetExtention(t *testing.T) {
+
+	uri := "s3://my-bucket/my/path/file.csv"
+
+	extension := GetExtention(uri)
+
+	want_extension := "csv"
+
+	if extension != want_extension {
+		t.Fatalf("Wanted %s, got %s", want_extension, extension)
+	}
+
+}
+
+//func TestGetExtentionMultiple(t *testing.T) {
+//
+//	uri := "s3://my-bucket/my/path/file.tar.gz"
+//
+//	extension := GetExtention(uri)
+//
+//	want_extension := "tar.gz"
+//
+//	if extension != want_extension {
+//		t.Fatalf("Wanted %s, got %s", want_extension, extension)
+//	}
+//}
+
+func TestGetExtentionNone(t *testing.T) {
+
+	uri := "s3://my-bucket/my/path/file"
+
+	extension := GetExtention(uri)
+
+	want_extension := ""
+
+	if extension != want_extension {
+		t.Fatalf("Wanted %s, got %s", want_extension, extension)
+	}
+}
