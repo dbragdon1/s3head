@@ -12,11 +12,6 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 )
 
-type S3Object struct {
-	BucketName string
-	Key        string
-}
-
 func Usage() {
 	fmt.Println("Usage: s3head [OPTION]... S3_URI")
 	flag.PrintDefaults()
@@ -47,7 +42,7 @@ func main() {
 	if len(positionals) < 1 {
 		fmt.Println("No s3 URI provided")
 		flag.Usage()
-		os.Exit(0)
+		os.Exit(1)
 	} else {
 		s3_uri = positionals[0]
 	}
