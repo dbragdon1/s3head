@@ -64,12 +64,12 @@ func main() {
 
 	req, err := s3_svc.GetObject(&s3_object)
 
-	defer req.Body.Close()
-
 	if err != nil {
 		fmt.Printf("Found issue when attempting GetObject: %v \n", err)
 		os.Exit(1)
 	}
+
+	defer req.Body.Close()
 
 	f := file.NewS3File(s3_uri, *numLines, *allLines, req)
 

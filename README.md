@@ -54,6 +54,12 @@ s3head -a s3://my-bucket/path/to/my/json/file \
     | jq .my_key
 ```
 
+## Save to a file
+
+```bash
+s3head -a s3://my-bucket/path/to/my/csv/file > myfile.csv
+```
+
 ## Automatic GZIP Decompression
 
 Note: `.tar.gz` format not implemented yet
