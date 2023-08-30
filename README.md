@@ -2,7 +2,6 @@
 
 I work with a lot of csv data, most of which is stored in s3, and wanted an easy way to get a small preview of files before downloading the full thing. Unfortunately, the aws cli does not make it easy to partially read files into a buffer, so I created this tool to make it a lot easier. It works similar to the linux `head` command, but does not have the exact same interface, so be warned. 
 
-
 # Installation
 
 ```bash
@@ -12,6 +11,8 @@ go build ./
 Then copy the `s3head` binary to your bin directory of choice.
 
 # Usage
+
+`s3head` is indifferent to the type of file you pass in. It simply iterates over the lines in the file. 
 
 ## Default behavior
 
@@ -33,7 +34,6 @@ s3head -n 10 s3://my-bucket/path/to/my/key
 ```
 s3head -a s3://my-bucket/path/to/my/key
 ```
-
 
 ## Pipe the output
 
