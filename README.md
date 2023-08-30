@@ -63,10 +63,6 @@ s3head -n 1000 s3://my-bucket/path/to/my/file.csv.gz \
     | xsv headers
 ```
 
-# TODO
-
-Implement Automatic untarring if file is in `.tar` format
-
 # Similar Projects
 
 The following projects seem to attempt to solve a similar problem as `s3head`. Why use `s3head` over these other solutions? Perhaps you like the api better, or perhaps it **feels** faster because it's written in golang and feels more modern. 
