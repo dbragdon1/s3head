@@ -7,7 +7,6 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 )
@@ -54,9 +53,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	sess, err := session.NewSession(&aws.Config{
-		Region: aws.String("us-west-2"),
-	})
+	sess, err := session.NewSession()
 
 	if err != nil {
 		fmt.Printf("Couldn't authenticate to AWS: %v \n", err)

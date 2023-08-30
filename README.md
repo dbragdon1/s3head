@@ -1,6 +1,6 @@
 # Background
 
-I work with a lot of csv data, most of which are stored in s3, and wanted an easy way to get a small preview of files before downloading the full thing. Unfortunately, the aws cli does not make it easy to partially read files into a buffer, so I created this tool to make it a lot easier. It works similar to the linux `head` command, but does not have the exact same interface, so be warned. 
+I work with a lot of csv data, most of which is stored in s3, and wanted an easy way to get a small preview of files before downloading the full thing. Unfortunately, the aws cli does not make it easy to partially read files into a buffer, so I created this tool to make it a lot easier. It works similar to the linux `head` command, but does not have the exact same interface, so be warned. 
 
 
 # Installation
@@ -63,6 +63,10 @@ s3head -n 1000 s3://my-bucket/path/to/my/file.csv.gz \
     | xsv headers
 ```
 
-# TODO
+# Similar Projects
 
-Implement Automatic untarring if file is in `.tar` format
+The following projects seem to attempt to solve a similar problem as `s3head`. Why use `s3head` over these other solutions? Perhaps you like the api better, or perhaps it **feels** faster because it's written in golang and feels more modern. 
+
+
+[s3streamcat](https://github.com/samarthg/s3streamcat)
+[s3curl](https://github.com/rtdp/s3curl)
