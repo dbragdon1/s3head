@@ -63,6 +63,23 @@ s3head -n 1000 s3://my-bucket/path/to/my/file.csv.gz \
     | xsv headers
 ```
 
+# Why not use the the AWS CLI `s3api get-object` command instead?
+
+1. For some reason, attempting to pipe the stream from `aws s3-api get-object` consistently results in a Broken Pipe error, which doesnt look very clean
+2. Working with gzipped data is a lot more concise with `s3head`:
+
+```bash
+aws s3api get-object --bucket my-bucket --key path/to/my/key.gz /dev/stdout \
+    | gunzip -c \
+    | head -n 2
+```
+
+versus
+
+```bash
+s3head -n 2 s3://my-bucket/path/to/my/key.gz
+```
+
 # Similar Projects
 
 The following projects seem to attempt to solve a similar problem as `s3head`. Why use `s3head` over these other solutions? Perhaps you like the api better, or perhaps it **feels** faster because it's written in golang and feels more modern. 
