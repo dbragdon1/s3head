@@ -69,7 +69,7 @@ s3head -n 1000 s3://my-bucket/path/to/my/file.csv.gz \
     | xsv headers
 ```
 
-# Why not use the the AWS CLI `s3api get-object` command instead?
+### Why not use the the AWS CLI `s3api get-object` command instead?
 
 1. For some reason, attempting to pipe the stream from `aws s3-api get-object` consistently results in a Broken Pipe error, which doesnt look very clean
 2. Working with gzipped data is a lot more concise with `s3head`:
@@ -92,4 +92,5 @@ The following projects seem to attempt to solve a similar problem as `s3head`. W
 
 
 [s3streamcat](https://github.com/samarthg/s3streamcat)
+
 [s3curl](https://github.com/rtdp/s3curl)
