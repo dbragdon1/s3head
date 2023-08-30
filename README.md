@@ -86,7 +86,7 @@ s3head -n 2 s3://my-bucket/path/to/my/key.gz
 
 # Similar Projects
 
-The following projects seem to attempt to solve a similar problem as `s3head`. Why use `s3head` over these other solutions? Perhaps you like the api better, or perhaps it **feels** faster because it's written in golang and feels more modern. 
+The following projects seem to attempt to solve a similar problem as `s3head`. Why use `s3head` over these other solutions? Perhaps you like the api better, or perhaps it **feels** faster because it's written in golang and feels more "modern". 
 
 
 [s3streamcat](https://github.com/samarthg/s3streamcat)
