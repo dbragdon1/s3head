@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"compress/gzip"
 	"dbragdon1/s3head/utils"
-	"fmt"
+	"io"
 
 	"github.com/aws/aws-sdk-go/service/s3"
 )
@@ -22,21 +22,25 @@ func NewS3File(s3_uri string, numLines int, allLines bool, object *s3.GetObjectO
 
 }
 
-func iter(scanner *bufio.Scanner, numLines int, allLines bool) {
+func iter(writer io.Writer, scanner *bufio.Scanner, numLines int, allLines bool) {
 	if allLines {
 		for scanner.Scan() {
-			fmt.Println(scanner.Text())
+
+			writer.Write([]byte(scanner.Text() + "\n"))
+
+			//fmt.Println(scanner.Text())
 		}
 	} else {
 		for curr_line := 0; curr_line < numLines; curr_line++ {
 
 			if scanner.Scan() {
-				fmt.Println(scanner.Text())
+				writer.Write([]byte(scanner.Text() + "\n"))
 			}
 		}
 	}
 
 }
+
 func (f *S3File) StandardIter() *bufio.Scanner {
 
 	return bufio.NewScanner(f.Obj.Body)
@@ -55,7 +59,7 @@ func (f *S3File) GzIter() (*bufio.Scanner, error) {
 	return buf, nil
 }
 
-func (f *S3File) Iter() error {
+func (f *S3File) Iter(writer io.Writer) error {
 
 	ext := utils.GetExtention(f.S3URI)
 
@@ -74,7 +78,7 @@ func (f *S3File) Iter() error {
 		buf = f.StandardIter()
 	}
 
-	iter(buf, f.NumLines, f.AllLines)
+	iter(writer, buf, f.NumLines, f.AllLines)
 
 	return err
 

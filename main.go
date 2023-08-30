@@ -76,7 +76,7 @@ func main() {
 
 	f := file.NewS3File(s3_uri, *numLines, *allLines, req)
 
-	err = f.Iter()
+	err = f.Iter(os.Stdout)
 
 	if err != nil {
 		fmt.Println(err)
