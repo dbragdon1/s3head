@@ -14,6 +14,10 @@ Then copy the `s3head` binary to your bin directory of choice.
 
 `s3head` is indifferent to the type of file you pass in. It simply iterates over the lines in the file. 
 
+## AWS Authentication
+
+You must obviously be authenticated to AWS to use this command. `s3head` defers AWS authentication to the steps taken by the `NewSession` object provided by `aws-sdk-go/aws/session`.
+
 ## Default behavior
 
 ```bash

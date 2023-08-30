@@ -49,7 +49,7 @@ func main() {
 	s3_object, err := utils.ParseS3URI(s3_uri)
 
 	if err != nil {
-		fmt.Printf("Trouble parsing s3 uri: %v \n", err)
+		fmt.Printf("Trouble parsing s3 URI: %v \n", err)
 		os.Exit(1)
 	}
 
